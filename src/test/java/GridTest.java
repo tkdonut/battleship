@@ -12,7 +12,7 @@ public class GridTest {
     Ship destroyer;
 
     @Before
-    public void before(){
+    public void before() {
         gameBoard = new Grid();
         cell = new Cell();
         battleship = new Ship(ShipType.BATTLESHIP);
@@ -21,7 +21,7 @@ public class GridTest {
     }
 
     @Test
-    public void new_grid_contains_two_dimensional_array_of_cells(){
+    public void new_grid_contains_two_dimensional_array_of_cells() {
         assertEquals(cell.getClass(), gameBoard.getGrid()[0][0].getClass());
         assertEquals(cell.getClass(), gameBoard.getGrid()[7][7].getClass());
     }
@@ -34,15 +34,17 @@ public class GridTest {
     }
 
     @Test
-    public void canPlaceShipWithX_Y(){
+    public void canPlaceShipWithX_Y() {
 
         assertTrue(gameBoard.getGrid()[0][0].isEmpty());
         assertTrue(gameBoard.getGrid()[0][1].isEmpty());
         assertTrue(gameBoard.getGrid()[0][2].isEmpty());
         assertTrue(gameBoard.getGrid()[0][3].isEmpty());
         assertTrue(gameBoard.getGrid()[0][4].isEmpty());
+        System.out.println("Before");
         gameBoard.print();
-        gameBoard.placeShip(battleship.getType(), 0, 0, false);
+        gameBoard.placeShip(battleship, 0, 0, false);
+        System.out.println("After");
         gameBoard.print();
         assertFalse(gameBoard.getGrid()[0][0].isEmpty());
         assertFalse(gameBoard.getGrid()[0][1].isEmpty());
@@ -52,7 +54,7 @@ public class GridTest {
     }
 
     @Test
-    public void canPlaceShipWithX_Y__2(){
+    public void canPlaceShipWithX_Y__2() {
 
         assertTrue(gameBoard.getGrid()[0][0].isEmpty());
         assertTrue(gameBoard.getGrid()[0][1].isEmpty());
@@ -62,8 +64,10 @@ public class GridTest {
         assertTrue(gameBoard.getGrid()[0][5].isEmpty());
         assertTrue(gameBoard.getGrid()[0][6].isEmpty());
         assertTrue(gameBoard.getGrid()[0][7].isEmpty());
+        System.out.println("Before");
         gameBoard.print();
-        gameBoard.placeShip(destroyer.getType(), 6, 0, false);
+        gameBoard.placeShip(destroyer, 6, 0, false);
+        System.out.println("After");
         gameBoard.print();
         assertTrue(gameBoard.getGrid()[0][0].isEmpty());
         assertTrue(gameBoard.getGrid()[0][1].isEmpty());
@@ -76,15 +80,17 @@ public class GridTest {
     }
 
     @Test
-    public void canPlaceShipWithX_Y_vertically(){
+    public void canPlaceShipWithX_Y_vertically() {
 
         assertTrue(gameBoard.getGrid()[0][0].isEmpty());
         assertTrue(gameBoard.getGrid()[1][0].isEmpty());
         assertTrue(gameBoard.getGrid()[2][0].isEmpty());
         assertTrue(gameBoard.getGrid()[3][0].isEmpty());
         assertTrue(gameBoard.getGrid()[4][0].isEmpty());
+        System.out.println("Before");
         gameBoard.print();
-        gameBoard.placeShip(battleship.getType(), 0, 0, true);
+        gameBoard.placeShip(battleship, 0, 0, true);
+        System.out.println("After");
         gameBoard.print();
         assertFalse(gameBoard.getGrid()[0][0].isEmpty());
         assertFalse(gameBoard.getGrid()[1][0].isEmpty());
@@ -94,15 +100,17 @@ public class GridTest {
     }
 
     @Test
-    public void canPlaceShipWithX_Y_vertically__2(){
+    public void canPlaceShipWithX_Y_vertically__2() {
 
         assertTrue(gameBoard.getGrid()[3][0].isEmpty());
         assertTrue(gameBoard.getGrid()[4][0].isEmpty());
         assertTrue(gameBoard.getGrid()[5][0].isEmpty());
         assertTrue(gameBoard.getGrid()[6][0].isEmpty());
         assertTrue(gameBoard.getGrid()[7][0].isEmpty());
+        System.out.println("Before");
         gameBoard.print();
-        gameBoard.placeShip(battleship.getType(), 0, 4, true);
+        gameBoard.placeShip(battleship, 0, 4, true);
+        System.out.println("After");
         gameBoard.print();
         assertTrue(gameBoard.getGrid()[3][0].isEmpty());
         assertFalse(gameBoard.getGrid()[4][0].isEmpty());
@@ -112,7 +120,7 @@ public class GridTest {
     }
 
     @Test
-    public void canPlaceShipWithX_Y_vertically__3(){
+    public void canPlaceShipWithX_Y_vertically__3() {
 
         assertTrue(gameBoard.getGrid()[2][7].isEmpty());
         assertTrue(gameBoard.getGrid()[3][7].isEmpty());
@@ -120,8 +128,10 @@ public class GridTest {
         assertTrue(gameBoard.getGrid()[5][7].isEmpty());
         assertTrue(gameBoard.getGrid()[6][7].isEmpty());
         assertTrue(gameBoard.getGrid()[7][7].isEmpty());
+        System.out.println("Before");
         gameBoard.print();
-        gameBoard.placeShip(aircraftCarrier.getType(), 7, 3, true);
+        gameBoard.placeShip(aircraftCarrier, 7, 3, true);
+        System.out.println("After");
         gameBoard.print();
         assertTrue(gameBoard.getGrid()[2][7].isEmpty());
         assertFalse(gameBoard.getGrid()[3][7].isEmpty());
@@ -130,14 +140,17 @@ public class GridTest {
         assertFalse(gameBoard.getGrid()[6][7].isEmpty());
         assertFalse(gameBoard.getGrid()[7][7].isEmpty());
     }
+
     @Test
 
-    public void cannotPlaceShipOutOfBounds(){
+    public void cannotPlaceShipOutOfBounds() {
         assertTrue(gameBoard.getGrid()[0][5].isEmpty());
         assertTrue(gameBoard.getGrid()[0][6].isEmpty());
         assertTrue(gameBoard.getGrid()[0][7].isEmpty());
+        System.out.println("Before");
         gameBoard.print();
-        gameBoard.placeShip(battleship.getType(), 5, 0, false);
+        gameBoard.placeShip(battleship, 5, 0, false);
+        System.out.println("After");
         gameBoard.print();
         assertTrue(gameBoard.getGrid()[0][5].isEmpty());
         assertTrue(gameBoard.getGrid()[0][6].isEmpty());
@@ -145,12 +158,14 @@ public class GridTest {
     }
 
     @Test
-    public void cannotPlaceShipOutOfBoundsVertically(){
+    public void cannotPlaceShipOutOfBoundsVertically() {
         assertTrue(gameBoard.getGrid()[5][3].isEmpty());
         assertTrue(gameBoard.getGrid()[6][3].isEmpty());
         assertTrue(gameBoard.getGrid()[7][3].isEmpty());
+        System.out.println("Before");
         gameBoard.print();
-        gameBoard.placeShip(battleship.getType(), 3, 5, true);
+        gameBoard.placeShip(battleship, 3, 5, true);
+        System.out.println("After");
         gameBoard.print();
         assertTrue(gameBoard.getGrid()[5][3].isEmpty());
         assertTrue(gameBoard.getGrid()[6][3].isEmpty());
@@ -158,29 +173,65 @@ public class GridTest {
     }
 
     @Test
-    public void canPlaceMultipleShips(){
+    public void canPlaceMultipleShips() {
         assertTrue(gameBoard.getGrid()[4][0].isEmpty());
         assertTrue(gameBoard.getGrid()[7][1].isEmpty());
         assertTrue(gameBoard.getGrid()[0][7].isEmpty());
+        System.out.println("Before");
         gameBoard.print();
-        gameBoard.placeShip(battleship.getType(), 0, 4, true);
-        gameBoard.placeShip(aircraftCarrier.getType(), 1, 7, false);
-        gameBoard.placeShip(destroyer.getType(), 7, 0, true);
+        gameBoard.placeShip(battleship, 0, 4, true);
+        gameBoard.placeShip(aircraftCarrier, 1, 7, false);
+        gameBoard.placeShip(destroyer, 7, 0, true);
         assertFalse(gameBoard.getGrid()[4][0].isEmpty());
         assertFalse(gameBoard.getGrid()[7][1].isEmpty());
         assertFalse(gameBoard.getGrid()[0][7].isEmpty());
+        System.out.println("After");
         gameBoard.print();
     }
 
     @Test
-    public void canCheckForCollisions(){
-        gameBoard.placeShip(destroyer.getType(), 7, 0, true);
+    public void canCheckForCollisions() {
+        gameBoard.placeShip(destroyer, 7, 0, true);
+        System.out.println("Before");
         gameBoard.print();
-        assertFalse(gameBoard.doesNotCollide(4,4,0,false));
-        assertTrue(gameBoard.doesNotCollide(3,4,0,false));
-        assertTrue(gameBoard.doesNotCollide(4,3,0,false));
-
+        assertTrue(gameBoard.collides(4, 4, 0, false));
+        assertFalse(gameBoard.collides(3, 4, 0, false));
+        assertFalse(gameBoard.collides(4, 3, 0, false));
     }
 
+    @Test
+    public void cannotPlaceShipsThatCollide() {
+        gameBoard.placeShip(aircraftCarrier, 3, 0, true);
+        System.out.println("Before");
+        gameBoard.print();
+        gameBoard.placeShip(aircraftCarrier, 0, 0, false);
+        System.out.println("After");
+        gameBoard.print();
+        assertTrue(gameBoard.getGrid()[1][0].isEmpty());
+    }
 
+    @Test
+    public void cannotPlaceShipsThatCollide__2() {
+        gameBoard.placeShip(aircraftCarrier, 3, 0, true);
+        gameBoard.placeShip(aircraftCarrier, 2, 0, true);
+        gameBoard.placeShip(aircraftCarrier, 1, 0, true);
+        gameBoard.placeShip(aircraftCarrier, 0, 0, true);
+        System.out.println("Before");
+        gameBoard.print();
+        gameBoard.placeShip(aircraftCarrier, 3, 4, false);
+        gameBoard.placeShip(aircraftCarrier, 3, 5, false);
+        gameBoard.placeShip(aircraftCarrier, 3, 6, false);
+        System.out.println("After");
+        gameBoard.print();
+        assertTrue(gameBoard.getGrid()[4][4].isEmpty());
+    }
+
+    @Test
+
+    public void shipsAreSetDeployedUponSuccessfulPlacement(){
+        assertFalse(aircraftCarrier.isDeployed());
+        gameBoard.placeShip(aircraftCarrier, 3, 4, false);
+        assertTrue(aircraftCarrier.isDeployed());
+
+    }
 }

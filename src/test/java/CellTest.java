@@ -5,11 +5,12 @@ import static org.junit.Assert.*;
 
 public class CellTest {
     Cell cell;
-
+    Ship battleship;
     @Before
 
     public void before(){
         cell = new Cell();
+        battleship = new Ship(ShipType.BATTLESHIP);
     }
 
     @Test
@@ -28,7 +29,7 @@ public class CellTest {
 
     public void cellCanBeSetToSpecificShip(){
         assertTrue(cell.isEmpty());
-        cell.setShip(ShipType.BATTLESHIP);
+        cell.setShip(battleship);
         assertFalse(cell.isEmpty());
         assertEquals(ShipType.BATTLESHIP, cell.getShipType());
     }

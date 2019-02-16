@@ -1,7 +1,9 @@
 import org.junit.Before;
 import org.junit.Test;
 
+import static junit.framework.TestCase.assertFalse;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 public class ShipTest {
     Ship aircraftCarrier;
@@ -34,6 +36,19 @@ public class ShipTest {
         assertEquals(3, cruiser.getLives());
         assertEquals(3, submarine.getLives());
         assertEquals(2, destroyer.getLives());
+    }
+
+    @Test
+
+    public void shipHasFalseDeployedFlag(){
+        assertEquals(false, aircraftCarrier.isDeployed());
+    }
+
+    @Test
+    public void canSetDeployedFlagTrue(){
+        assertFalse(aircraftCarrier.isDeployed());
+        aircraftCarrier.setDeployed();
+        assertTrue(aircraftCarrier.isDeployed());
     }
 
 }

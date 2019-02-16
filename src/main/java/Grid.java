@@ -22,40 +22,45 @@ public class Grid {
         return gridArray;
     }
 
-    public void placeShip(ShipType shipToPlace, int x, int y, boolean vertical){
+    public void placeShip(Ship ship, int x, int y, boolean vertical){
+        ShipType shipToPlace = ship.getType();
         int length = shipToPlace.getLength();
 
         if (!vertical) {
             if (x + length > 8) return;
+            if (collides(length,x,y,vertical)) return;
             for (int i = x; i < x + length; i++) {
-                this.gridArray[y][i].setShip(shipToPlace);
+                this.gridArray[y][i].setShip(ship);
             }
+            ship.setDeployed();
         }else{
             if (y + length > 8) return;
+            if (collides(length,x,y,vertical)) return;
             for (int i = y; i < y + length; i++ ){
-                this.gridArray[i][x].setShip(shipToPlace);
+                this.gridArray[i][x].setShip(ship);
             }
+            ship.setDeployed();
         }
     }
 
-    public boolean doesNotCollide(int length, int x, int y, boolean vertical){
+    public boolean collides(int length, int x, int y, boolean vertical){
 
         if (!vertical) {
-            if (x + length > 8) return false;
+            if (x + length > 8) return true;
             for (int i = x; i < x + length; i++) {
                 if (!this.gridArray[y][i].isEmpty()){
-                    return false;
+                    return true;
                 }
             }
         }else {
-            if (y + length > 8) return false;
+            if (y + length > 8) return true;
             for (int i = y; i < y + length; i++) {
                 if (!this.gridArray[i][x].isEmpty()) {
-                    return false;
+                    return true;
                 }
             }
         }
-        return true;
+        return false;
     }
 
     public void print(){

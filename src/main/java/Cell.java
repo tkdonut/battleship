@@ -1,12 +1,11 @@
 public class Cell {
     private boolean empty;
-    private ShipType shipType;
+    private Ship ship;
     private boolean explosion;
 
     public Cell(){
         empty = true;
         explosion = false;
-        shipType = null;
     }
 
     public boolean isEmpty(){
@@ -18,12 +17,16 @@ public class Cell {
     }
 
     public ShipType getShipType(){
-        return shipType;
+        return ship.getType();
     }
 
-    public void setShip(ShipType newShip){
-        this.shipType = newShip;
+    public void setShip(Ship newShip){
+        this.ship = newShip;
         this.setFull();
+    }
+
+    public Ship getShip(){
+       return ship;
     }
 
     public boolean isExploded(){
