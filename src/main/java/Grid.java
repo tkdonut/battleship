@@ -1,35 +1,25 @@
 public class Grid {
-    String[][] gridArray;
+    Cell[][] gridArray;
+    int cols;
+    int rows;
 
     public Grid(){
-        gridArray = new String[][]
-                {
-                        {"o", "o", "o", "o", "o", "o", "o", "o", "o", "o"},
-                        {"o", "o", "o", "o", "o", "o", "o", "o", "o", "o"},
-                        {"o", "o", "o", "o", "o", "o", "o", "o", "o", "o"},
-                        {"o", "o", "o", "o", "o", "o", "o", "o", "o", "o"},
-                        {"o", "o", "o", "o", "o", "o", "o", "o", "o", "o"},
-                        {"o", "o", "o", "o", "o", "o", "o", "o", "o", "o"},
-                        {"o", "o", "o", "o", "o", "o", "o", "o", "o", "o"},
-                        {"o", "o", "o", "o", "o", "o", "o", "o", "o", "o"},
-                        {"o", "o", "o", "o", "o", "o", "o", "o", "o", "o"},
-                        {"o", "o", "o", "o", "o", "o", "o", "o", "o", "o"},
-                };
-    }
+        this.cols = 8;
+        this.rows = 8;
+
+        gridArray = new Cell[cols][rows];
 
 
-    public String[][]getGrid(){
-       return gridArray;
-    }
-
-    public void logGrid(){
-        for (String [] row : gridArray){
-            System.out.println();
-            for (String cell : row){
-                System.out.print(cell);
+        for (int i = 0; i < cols; i++){
+            for (int j = 0; j < rows; j++){
+                gridArray[i][j] = new Cell();
             }
         }
     }
 
+
+    public Cell[][]getGrid(){
+       return gridArray;
+    }
 }
 
