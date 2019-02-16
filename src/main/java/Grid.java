@@ -21,5 +21,23 @@ public class Grid {
     public Cell[][]getGrid(){
        return gridArray;
     }
-}
+
+
+    public void placeShip(ShipType shipToPlace, int x, int y, boolean vertical){
+        int length = shipToPlace.getLength();
+
+        if (!vertical) {
+            if (x + length > 8) return;
+            for (int i = x; i < x + length; i++) {
+                this.gridArray[y][i].setShip(shipToPlace);
+            }
+        }else{
+            if (y + length > 8) return;
+            for (int i = y; i < y + length; i++ ){
+                this.gridArray[i][x].setShip(shipToPlace);
+                }
+            }
+        }
+    }
+
 
