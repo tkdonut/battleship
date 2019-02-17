@@ -12,8 +12,16 @@ public class Player {
        ships.add(new Ship(ShipType.SUBMARINE));
        ships.add(new Ship(ShipType.DESTROYER));
     }
-
     public ArrayList<Ship> getShips(){
         return ships;
+    }
+
+    public boolean hasLost(){
+        for (Ship ship : ships){
+            if (!ship.isSunk()) {
+               return false;
+            }
+        }
+        return true;
     }
 }

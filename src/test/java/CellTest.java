@@ -33,4 +33,11 @@ public class CellTest {
         assertFalse(cell.isEmpty());
         assertEquals(ShipType.BATTLESHIP, cell.getShipType());
     }
+
+    @Test
+
+    public void cellCanBeSetExploded(){
+        cell.setExploded();
+        assertTrue(cell.isExploded());
+    }
 }

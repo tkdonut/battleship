@@ -51,4 +51,37 @@ public class ShipTest {
         assertTrue(aircraftCarrier.isDeployed());
     }
 
+    @Test
+    public void shipCanLoseLife(){
+        assertEquals(5, aircraftCarrier.getLives());
+        aircraftCarrier.loseLife();
+        assertEquals(4, aircraftCarrier.getLives());
+    }
+
+    @Test
+    public void shipStartsNotSunk(){
+        assertFalse(aircraftCarrier.isSunk());
+    }
+
+    @Test
+    public void losingAllLivesSinksShip(){
+        assertFalse(aircraftCarrier.isSunk());
+        aircraftCarrier.loseLife();
+        aircraftCarrier.loseLife();
+        aircraftCarrier.loseLife();
+        aircraftCarrier.loseLife();
+        assertFalse(aircraftCarrier.isSunk());
+        aircraftCarrier.loseLife();
+        assertTrue(aircraftCarrier.isSunk());
+    }
+
+    @Test
+    public void losingAllLivesSinksShip__2(){
+        assertFalse(destroyer.isSunk());
+        destroyer.loseLife();
+        assertFalse(destroyer.isSunk());
+        destroyer.loseLife();
+        assertTrue(destroyer.isSunk());
+
+    }
 }

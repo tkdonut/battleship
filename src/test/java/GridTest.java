@@ -234,4 +234,60 @@ public class GridTest {
         assertTrue(aircraftCarrier.isDeployed());
 
     }
+
+    @Test
+    public void canFireAtCell(){
+        gameBoard.placeShip(aircraftCarrier, 0, 0, false);
+        System.out.println("Before");
+        gameBoard.print();
+        gameBoard.fireAt(0,0);
+        System.out.println("After");
+        gameBoard.print();
+        assertTrue(gameBoard.getGrid()[0][0].isExploded());
+    }
+
+    @Test
+    public void firedAtShipsLoseLives(){
+        gameBoard.placeShip(aircraftCarrier, 0, 0, false);
+        System.out.println("Before");
+        gameBoard.print();
+        gameBoard.fireAt(0,0);
+        gameBoard.fireAt(1,0);
+        gameBoard.fireAt(2,0);
+        System.out.println("After");
+        gameBoard.print();
+        assertEquals(2,aircraftCarrier.getLives());
+    }
+
+    @Test
+    public void firedAtShipsCanBeSunk(){
+        gameBoard.placeShip(aircraftCarrier, 0, 0, false);
+        System.out.println("Before");
+        gameBoard.print();
+        gameBoard.fireAt(0,0);
+        gameBoard.fireAt(1,0);
+        gameBoard.fireAt(2,0);
+        gameBoard.fireAt(3,0);
+        gameBoard.fireAt(4,0);
+        System.out.println("After");
+        gameBoard.print();
+        assertTrue(aircraftCarrier.isSunk());
+    }
+
+    @Test
+    public void firingAtPreviouslyHitCellsDoesNothing(){
+        gameBoard.placeShip(destroyer, 0, 0, false);
+        System.out.println("Before");
+        gameBoard.print();
+        gameBoard.fireAt(0,0);
+        gameBoard.fireAt(0,0);
+        gameBoard.fireAt(0,0);
+        gameBoard.fireAt(0,0);
+        gameBoard.fireAt(0,0);
+        gameBoard.fireAt(0,0);
+        System.out.println("After");
+        gameBoard.print();
+        assertFalse(destroyer.isSunk());
+    }
+
 }

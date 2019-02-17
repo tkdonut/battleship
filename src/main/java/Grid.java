@@ -69,13 +69,25 @@ public class Grid {
             for (int j = 0; j < rows; j++){
                 if (gridArray[i][j].isEmpty()){
                     System.out.print(".");
+                } else if (gridArray[i][j].isExploded()) {
+                    System.out.printf("!");
                 } else {
+
                     System.out.printf(gridArray[i][j].getShipType().getSymbol());
                 }
 
             }
         }
         System.out.println();
+    }
+
+    public void fireAt(int x, int y){
+       Cell targetCell = this.gridArray[y][x];
+       if (targetCell.isExploded()){ return;}
+       if (!targetCell.isEmpty()) {
+           targetCell.setExploded();
+           targetCell.getShip().loseLife();
+       }
     }
 }
 

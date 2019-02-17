@@ -33,4 +33,8 @@ public class Cell {
         return explosion;
     };
 
+    public void setExploded(){
+        explosion = true;
+    }
+
 }
