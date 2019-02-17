@@ -69,6 +69,7 @@ public class Game {
                     }
                 }
                 player.getGrid().placeShip(ship, x, y, vertical);
+                System.out.println("----------------------------------------");
                 player.getGrid().print();
             }
         }

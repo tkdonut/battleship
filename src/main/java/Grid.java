@@ -2,6 +2,10 @@ public class Grid {
     Cell[][] gridArray;
     int cols;
     int rows;
+    private final String ANSI_RED = "\u001B[31m";
+    private final String ANSI_YELLOW = "\u001B[33m";
+    private final String ANSI_RESET = "\u001B[0m";
+    private final String ANSI_BLUE = "\u001B[34m";
 
     public Grid(){
         this.cols = 8;
@@ -68,12 +72,12 @@ public class Grid {
             System.out.println();
             for (int j = 0; j < rows; j++){
                 if (gridArray[i][j].isEmpty()){
-                    System.out.print(" . ");
+                    System.out.print(ANSI_BLUE + " . " + ANSI_RESET);
                 } else if (gridArray[i][j].isExploded()) {
-                    System.out.printf(" ! ");
+                    System.out.printf(ANSI_RED + " ! " + ANSI_RESET);
                 } else {
 
-                    System.out.printf(" " + gridArray[i][j].getShipType().getSymbol() + " ");
+                    System.out.printf(ANSI_YELLOW +" " + gridArray[i][j].getShipType().getSymbol() + " " + ANSI_RESET);
                 }
 
             }
