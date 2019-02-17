@@ -68,12 +68,12 @@ public class Grid {
             System.out.println();
             for (int j = 0; j < rows; j++){
                 if (gridArray[i][j].isEmpty()){
-                    System.out.print(".");
+                    System.out.print(" . ");
                 } else if (gridArray[i][j].isExploded()) {
-                    System.out.printf("!");
+                    System.out.printf(" ! ");
                 } else {
 
-                    System.out.printf(gridArray[i][j].getShipType().getSymbol());
+                    System.out.printf(" " + gridArray[i][j].getShipType().getSymbol() + " ");
                 }
 
             }

@@ -1,16 +1,20 @@
-import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Player {
-    ArrayList<Ship> ships;
+    private ArrayList<Ship> ships;
+    private Grid grid;
+    private String name;
 
-    public Player(){
+    public Player(String name){
        this.ships = new ArrayList<>();
        ships.add(new Ship(ShipType.AIRCRAFTCARRIER));
        ships.add(new Ship(ShipType.BATTLESHIP));
        ships.add(new Ship(ShipType.CRUISER));
        ships.add(new Ship(ShipType.SUBMARINE));
        ships.add(new Ship(ShipType.DESTROYER));
+       this.grid = new Grid();
+       this.name = name;
     }
     public ArrayList<Ship> getShips(){
         return ships;
@@ -24,4 +28,13 @@ public class Player {
         }
         return true;
     }
+
+    public Grid getGrid(){
+        return grid;
+    }
+
+    public String getName(){
+        return name;
+    }
+
 }

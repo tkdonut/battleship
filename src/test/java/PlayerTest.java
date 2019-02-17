@@ -1,3 +1,4 @@
+import com.sun.org.apache.xpath.internal.operations.Bool;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -5,11 +6,13 @@ import static org.junit.Assert.*;
 
 public class PlayerTest {
     Player player;
+    Grid grid;
 
     @Before
 
     public void before(){
-        player = new Player();
+        player = new Player("Player 1");
+        grid = new Grid();
     }
 
     @Test
@@ -30,6 +33,8 @@ public class PlayerTest {
         assertTrue(player.hasLost());
     }
 
-
-
+    @Test
+    public void playerHasAGrid(){
+       assertEquals(grid.getClass(), player.getGrid().getClass());
+    }
 }
