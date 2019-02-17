@@ -68,8 +68,11 @@ public class Grid {
     }
 
     public void print(){
+        System.out.println("    0  1  2  3  4  5  6  7");
+        System.out.print("  ------------------------");
         for (int i = 0; i < cols; i++){
             System.out.println();
+            System.out.print(i + " |");
             for (int j = 0; j < rows; j++){
                 if (gridArray[i][j].isEmpty()){
                     System.out.print(ANSI_BLUE + " . " + ANSI_RESET);
