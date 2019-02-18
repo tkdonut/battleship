@@ -269,8 +269,11 @@ public class GridTest {
         gameBoard.fireAt(2,0);
         gameBoard.fireAt(3,0);
         gameBoard.fireAt(4,0);
+        gameBoard.fireAt(5,0);
+        gameBoard.fireAt(6,0);
         System.out.println("After");
         gameBoard.print();
+        gameBoard.printHitsAndMisses();
         assertTrue(aircraftCarrier.isSunk());
     }
 

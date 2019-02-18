@@ -88,12 +88,35 @@ public class Grid {
         System.out.println();
     }
 
+    public void printHitsAndMisses(){
+        System.out.println("    0  1  2  3  4  5  6  7");
+        System.out.print("  ------------------------");
+        for (int i = 0; i < cols; i++){
+            System.out.println();
+            System.out.print(i + " |");
+            for (int j = 0; j < rows; j++){
+                if (gridArray[i][j].isExploded()){
+                    System.out.print(ANSI_RED + " X " + ANSI_RESET);
+                } else if (gridArray[i][j].getMiss()) {
+                    System.out.printf(" O ");
+                } else {
+
+                    System.out.print(ANSI_BLUE + " . " + ANSI_RESET);
+                }
+
+            }
+        }
+        System.out.println();
+    }
+
     public void fireAt(int x, int y){
        Cell targetCell = this.gridArray[y][x];
        if (targetCell.isExploded()){ return;}
        if (!targetCell.isEmpty()) {
            targetCell.setExploded();
            targetCell.getShip().loseLife();
+       } else {
+          targetCell.setMiss();
        }
     }
 }

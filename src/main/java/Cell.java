@@ -2,6 +2,7 @@ public class Cell {
     private boolean empty;
     private Ship ship;
     private boolean explosion;
+    private boolean miss;
 
     public Cell(){
         empty = true;
@@ -37,4 +38,6 @@ public class Cell {
         explosion = true;
     }
 
+    public void setMiss(){miss = true;}
+    public boolean getMiss(){return miss;}
 }

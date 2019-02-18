@@ -10,6 +10,41 @@ public class Game {
         deployShips(player1);
         deployShips(player2);
 
+        while (!player2.hasLost()){
+            player2.getGrid().printHitsAndMisses();
+            player1.getGrid().print();
+            boolean validInput = false;
+            Scanner scanner = new Scanner(System.in);
+            int x = -1;
+            int y = -1;
+
+            while (!validInput) {
+                try {
+                    System.out.println("Please enter X coord in a range between 0-7");
+                    x = Integer.parseInt(scanner.nextLine());
+                    if (x >= 0 && x <= 7) {
+                        validInput = true;
+                    }
+
+                } catch (Exception e) {
+                }
+            }
+            validInput = false;
+            while (!validInput) {
+                try {
+                    System.out.println("Please enter Y coord in a range between 0-7");
+                    y = Integer.parseInt(scanner.nextLine());
+                    if (y >= 0 && y <= 7) {
+                        validInput = true;
+                    }
+
+                } catch (Exception e) {
+                }
+            }
+            player2.getGrid().fireAt(x,y);
+
+        }
+
 
 
 
