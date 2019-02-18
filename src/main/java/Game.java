@@ -11,6 +11,7 @@ public class Game {
         deployShips(player2);
 
         while (!player2.hasLost()){
+            printLogo();
             player2.getGrid().printHitsAndMisses();
             player1.getGrid().print();
             boolean validInput = false;
@@ -20,6 +21,7 @@ public class Game {
 
             while (!validInput) {
                 try {
+                    System.out.println("Firing a shot:");
                     System.out.println("Please enter X coord in a range between 0-7");
                     x = Integer.parseInt(scanner.nextLine());
                     if (x >= 0 && x <= 7) {
@@ -32,6 +34,7 @@ public class Game {
             validInput = false;
             while (!validInput) {
                 try {
+                    System.out.println("Firing a shot:");
                     System.out.println("Please enter Y coord in a range between 0-7");
                     y = Integer.parseInt(scanner.nextLine());
                     if (y >= 0 && y <= 7) {
@@ -56,6 +59,7 @@ public class Game {
         int y = -1;
         boolean vertical = false;
         System.out.println();
+        printLogo();
         player.getGrid().print();
         for (Ship ship : player.getShips()) {
             while (!ship.isDeployed()) {
@@ -105,9 +109,21 @@ public class Game {
                 }
                 player.getGrid().placeShip(ship, x, y, vertical);
                 System.out.println("----------------------------------------");
+                printLogo();
                 player.getGrid().print();
             }
         }
+    }
+    public static void printLogo(){
+        System.out.println(" .  o ..");
+        System.out.println(" o . o o.o");
+        System.out.println("      ...oo");
+        System.out.println("      ...oo");
+        System.out.println("        __[]__");
+        System.out.println("     __|_o_o_o\\__");
+        System.out.println("     \\\"\"\"\"\"\"\"\"\"\"/");
+        System.out.println("      \\. ..  . /");
+        System.out.println(" ^^^^^^^^^^^^^^^^^^^^");
     }
 }
 

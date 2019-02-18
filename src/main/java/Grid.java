@@ -1,7 +1,7 @@
 public class Grid {
     Cell[][] gridArray;
-    int cols;
-    int rows;
+    private int cols;
+    private int rows;
     private final String ANSI_RED = "\u001B[31m";
     private final String ANSI_YELLOW = "\u001B[33m";
     private final String ANSI_RESET = "\u001B[0m";
